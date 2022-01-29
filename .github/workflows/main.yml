@@ -7,6 +7,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  tags:
+    - 'v*'
 
   workflow_dispatch:
 
@@ -40,4 +42,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: kipnisad/helloserver:latest
+          tags: kipnisad/helloserver:${GITHUB_REF##*/}
