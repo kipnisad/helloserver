@@ -44,4 +44,5 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: kipnisad/helloserver:${{github.ref_name}}
+          #tags: kipnisad/helloserver:${{github.ref_name}}
+          tags: kipnisad/helloserver:latest
