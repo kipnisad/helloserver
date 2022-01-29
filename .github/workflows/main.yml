@@ -40,4 +40,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: kipnisad/latest
+          tags: kipnisad/helloserver:latest
