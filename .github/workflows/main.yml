@@ -21,6 +21,12 @@ jobs:
         name: Checkout 
         uses: actions/checkout@v2
       -
+        name: Docker meta
+        id: meta
+        uses: docker/metadata-action@v3
+        with:
+          images: kipnisad/helloserver
+      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       -
@@ -38,6 +44,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          push: true
-          #tags: kipnisad/helloserver:${{github.ref_name}}
-          tags: kipnisad/helloserver:latest
+          push: true #${{ github.event_name == 'push' && contains(github.ref, 'refs/tags/') }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
